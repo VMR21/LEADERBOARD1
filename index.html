@@ -104,7 +104,7 @@
                 <span class="text-white"> monthly leaderboard</span>
             </h1>
             <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-                Giving away <span class="text-purple-300 font-bold">$4,050</span> in prizes!!
+                Giving away <span class="text-purple-300 font-bold">$4,050</span> in prizes!
             </p>
         </div>
 
@@ -213,22 +213,29 @@
         // Call createStars when the page loads
         window.addEventListener('load', createStars);
 
-// Function to return manually entered leaderboard data
-function fetchLeaderboardData() {
-    // Static leaderboard data
-    return [
-        { name: "tok***n39", wager: 280496, weightedWager: 853290, prize: "2000", favoriteGame: "Blackjack" },
-        { name: "tom***mukun", wager:93969, weightedWager: 579890, prize: "1000", favoriteGame: "Roulette" },
-        { name: "pi***3", wager: 66255, weightedWager: 159849, prize: "500", favoriteGame: "Poker" },
-        { name: "dod**an16", wager: 37606, weightedWager: 115620, prize: "200", favoriteGame: "Slots" },
-        { name: "Ba***19", wager: 35918, weightedWager: 95600, prize: "100", favoriteGame: "Baccarat" },
-        { name: "mu***068", wager: 31980, weightedWager: 59905, prize: "50", favoriteGame: "Craps" },
-        { name: "ke***ack", wager: 31407, weightedWager: 57179, prize: "50", favoriteGame: "Blackjack" },
-        { name: "Tm***580", wager: 28964, weightedWager: 49303, prize: "50", favoriteGame: "Roulette" },
-        { name: "de***evil", wager: 26030, weightedWager: 43524, prize: "50", favoriteGame: "Poker" },
-        { name: "ga***615", wager: 25209, weightedWager: 40698, prize: "50", favoriteGame: "Slots" },
-    ];
-}
+
+        // Function to fetch leaderboard data from the Flask API
+        async function fetchLeaderboardData() {
+            try {
+              
+                const response = await fetch('https://c95c813f-63f5-41d3-9fc8-a2a51ad7d9be-00-3or5p644l6uqn.sisko.replit.dev:5000/leaderboard');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                // Process the data to match our required format
+                return data.map((player, index) => ({
+                    name: player.username,
+                    wager: Math.round(player.weightedWager),
+                    prize: getStaticPrize(index + 1),
+                }));
+            } catch (error) {
+                console.error('Error fetching leaderboard data:', error);
+                throw error;
+            }
+        }
 
 
         // Function to get static prize based on position
@@ -298,7 +305,7 @@ function fetchLeaderboardData() {
             if (position === 5) {
                 html += `
                     <div class="my-4 p-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl text-center animate-pulse">
-                        <p class="text-white text-lg font-bold">$50 each for the last 5 players!</p>
+                        <p class="text-white text-lg font-bold">12th January 2025 to 12th February 2025</p>
                     </div>
                 `;
             }
