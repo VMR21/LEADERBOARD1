@@ -78,12 +78,39 @@
             flex-direction: column;
         }
     </style>
+<head>
+  <style>
+    /* Define the animation */
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Apply the animation to the countdown-overlay */
+    #countdown-overlay {
+      animation: fadeInOut 5s ease-in-out forwards;
+    }
+
+    /* Add some basic styles for visibility */
+    .timeup-animation {
+      opacity: 0;
+      animation: fadeInOut 5s ease-in-out forwards;
+    }
+  </style>
 </head>
 <body class="min-h-screen bg-black relative flex flex-col">
-    <div id="countdown-overlay" class="text-white text-center">
-        <h2 class="text-4xl font-bold mb-4 timeup-animation">Time's Up!</h2>
-        <p class="text-xl timeup-animation">The leaderboard has ended.</p>
-    </div>
+  <div id="countdown-overlay" class="text-white text-center">
+    <h2 class="text-4xl font-bold mb-4 timeup-animation">Time's Up!</h2>
+    <p class="text-xl timeup-animation">The leaderboard has ended.</p>
+  </div>
+
 
     <div class="fixed inset-0 z-0">
         <div class="absolute inset-0 bg-radial-gradient from-purple-900 via-purple-950 to-black"></div>
@@ -402,7 +429,7 @@
 
             if (distance < 0) {
                 clearInterval(countdownTimer);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
+                document.getElementById("countdown").innerHTML = "NEW LEADERBOARD SOON";
                 document.getElementById("countdown-overlay").style.display = "flex";
                 document.body.style.overflow = "hidden";
             }
