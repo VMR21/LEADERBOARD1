@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/1216117034690285682/1328729099216224297/favicon_2.ico?ex=678a65e7&is=67891467&hm=db99d8fb41bac510beb843c4709f7607eb27fb84878d7a5394d89cf166640caa&">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Add the shimmer and glow animations */
         @keyframes pulse-glow {
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
@@ -36,6 +36,7 @@
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
             z-index: 20;
         }
+        /* Custom animation effects */
         @keyframes shimmer {
             0% {
                 background-position: -1000px 0;
@@ -49,6 +50,7 @@
             background: linear-gradient(to right, #4a1d6e 4%, #6d28d9 25%, #4a1d6e 36%);
             background-size: 1000px 100%;
         }
+        /* Countdown animations */
         @keyframes countdown-pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -77,13 +79,44 @@
             align-items: center;
             flex-direction: column;
         }
+        /* Custom styles for the leaderboard section */
+        .wager-reward-frame {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .wager-reward-item {
+            background-color: rgba(128, 0, 128, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .wager-reward-item:hover {
+            transform: scale(1.05);
+        }
+        .username-list {
+            margin-top: 10px;
+            font-weight: bold;
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        .username-list li {
+            margin: 10px 0;
+            color: #D6A4FF; /* Default color for usernames */
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .username-list li:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+            color: #D6A4FF; /* Change color to purple on hover */
+        }
     </style>
 </head>
 <body class="min-h-screen bg-black relative flex flex-col">
-    <div id="countdown-overlay" class="text-white text-center">
-        <h2 class="text-4xl font-bold mb-4 timeup-animation">Time's Up!</h2>
-        <p class="text-xl timeup-animation">The leaderboard has ended.</p>
-    </div>
 
     <div class="fixed inset-0 z-0">
         <div class="absolute inset-0 bg-radial-gradient from-purple-900 via-purple-950 to-black"></div>
@@ -97,34 +130,122 @@
         </div>
     </header>
 
-<main class="relative container mx-auto px-4 pt-12 pb-16 flex-grow z-10">
-  <div class="text-center mb-16">
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-title">
-      <span class="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Roobet</span>
-      <span class="text-white"> Wager Reward</span>
-    </h1>
-    <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-      Giving away <span class="text-purple-300 font-bold">$6,500</span> in prizes! and <span class="text-purple-300 font-bold">Wager Rewards!</span>
-    </p>
-  </div>
+    <main class="relative container mx-auto px-4 pt-12 pb-16 flex-grow z-10">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-title">
+                <span class="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Roobet</span>
+                <span class="text-white"> Wager Reward</span>
+            </h1>
+            <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
+                Giving away <span class="text-purple-300 font-bold">$6,500</span> in prizes! and <span class="text-purple-300 font-bold">Wager Rewards!</span>
+            </p>
+        </div>
 
-<div class="wager-reward-frame flex flex-col md:flex-row gap-4"> 
-    <div class="wager-reward-item md:w-1/2 hover:scale-110 transition-transform duration-300 ease-in-out bg-purple-800/20 p-4 rounded-lg"> 
-      <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$500,000+</span></p>
-      <p class="text-white text-center font-bold text-2xl">Reward: $2500</p>
-    </div>
-    <div class="wager-reward-item md:w-1/2 hover:scale-110 transition-transform duration-300 ease-in-out bg-purple-800/20 p-4 rounded-lg">
-      <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$300,000 - $500,000</span></p>
-      <p class="text-white text-center font-bold text-2xl">Reward: $1700</p>
-    </div>
-    <div class="wager-reward-item md:w-1/2 hover:scale-110 transition-transform duration-300 ease-in-out bg-purple-800/20 p-4 rounded-lg">
-      <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$100,000 - $300,000</span></p>
-      <p class="text-white text-center font-bold text-2xl">Reward: $800</p>
-    </div>
-    <div class="wager-reward-item md:w-1/2 hover:scale-110 transition-transform duration-300 ease-in-out bg-purple-800/20 p-4 rounded-lg">
-      <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$50,000 - $100,000</span></p>
-      <p class="text-white text-center font-bold text-2xl">Reward: $500</p>
-    </div>
+        <div class="wager-reward-frame">
+            <!-- $500,000+ Wager -->
+            <div class="wager-reward-item" id="wager-500k">
+                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$500,000+</span></p>
+                <p class="text-white text-center font-bold text-2xl">Reward: $2500</p>
+                <ul class="username-list" id="list-500k"></ul>
+            </div>
+            
+            <!-- $300,000 - $500,000 Wager -->
+            <div class="wager-reward-item" id="wager-300k-500k">
+                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$300,000 - $500,000</span></p>
+                <p class="text-white text-center font-bold text-2xl">Reward: $1700</p>
+                <ul class="username-list" id="list-300k-500k"></ul>
+            </div>
+
+            <!-- $100,000 - $300,000 Wager -->
+            <div class="wager-reward-item" id="wager-100k-300k">
+                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$100,000 - $300,000</span></p>
+                <p class="text-white text-center font-bold text-2xl">Reward: $800</p>
+                <ul class="username-list" id="list-100k-300k"></ul>
+            </div>
+
+            <!-- $50,000 - $100,000 Wager -->
+            <div class="wager-reward-item" id="wager-50k-100k">
+                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$50,000 - $100,000</span></p>
+                <p class="text-white text-center font-bold text-2xl">Reward: $500</p>
+                <ul class="username-list" id="list-50k-100k"></ul>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Fetch the JSON data from the provided URL
+        fetch('https://legitimate-navy-reality-reddymodith.replit.app/leaderboard')
+            .then(response => response.json())
+            .then(data => {
+                // Categorize the users based on wager amounts
+                const categorizedUsers = {
+                    "$500,000+": [],
+                    "$300,000 - $500,000": [],
+                    "$100,000 - $300,000": [],
+                    "$50,000 - $100,000": []
+                };
+
+                // Process each user and categorize based on their wagered amount
+                data.forEach(user => {
+                    if (user.wagered >= 500000) {
+                        categorizedUsers["$500,000+"].push(user.username);
+                    } else if (user.wagered >= 300000) {
+                        categorizedUsers["$300,000 - $500,000"].push(user.username);
+                    } else if (user.wagered >= 100000) {
+                        categorizedUsers["$100,000 - $300,000"].push(user.username);
+                    } else if (user.wagered >= 50000) {
+                        categorizedUsers["$50,000 - $100,000"].push(user.username);
+                    }
+                });
+
+                // Function to display users under the correct wager category
+                function displayUsers() {
+                    // Wager $500,000+
+                    const list500k = document.getElementById('list-500k');
+                    categorizedUsers["$500,000+"].forEach(user => {
+                        const li = document.createElement('li');
+                        li.textContent = user;
+                        list500k.appendChild(li);
+                    });
+
+                    // Wager $300,000 - $500,000
+                    const list300k500k = document.getElementById('list-300k-500k');
+                    categorizedUsers["$300,000 - $500,000"].forEach(user => {
+                        const li = document.createElement('li');
+                        li.textContent = user;
+                        list300k500k.appendChild(li);
+                    });
+
+                    // Wager $100,000 - $300,000
+                    const list100k300k = document.getElementById('list-100k-300k');
+                    categorizedUsers["$100,000 - $300,000"].forEach(user => {
+                        const li = document.createElement('li');
+                        li.textContent = user;
+                        list100k300k.appendChild(li);
+                    });
+
+                    // Wager $50,000 - $100,000
+                    const list50k100k = document.getElementById('list-50k-100k');
+                    categorizedUsers["$50,000 - $100,000"].forEach(user => {
+                        const li = document.createElement('li');
+                        li.textContent = user;
+                        list50k100k.appendChild(li);
+                    });
+                }
+
+                // Call function to display users
+                displayUsers();
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+
+</body>
+</html>
+
+
 </div>
             
         <div class="max-w-4xl mx-auto mb-4">
