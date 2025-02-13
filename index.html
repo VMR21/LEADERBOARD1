@@ -219,7 +219,7 @@
       <span class="text-white"> monthly leaderboard</span> 
     </h1> 
 <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-    Giving away <span class="text-purple-300 font-bold">$6,000</span> in prizes
+    Giving away <span class="text-purple-300 font-bold">$6,500</span> in prizes
     and
     <a href="https://vmr21.github.io/WAGERREWARD/" target="_blank" rel="noopener noreferrer" class="text-purple-300 font-bold">Wager Rewards</a>!
 </p>
@@ -375,7 +375,7 @@
 
         // Function to get static prize based on position
         function getStaticPrize(position) {
-            const prizes = [3000, 1500, 700, 400, 150, 50, 50, 50, 50, 50];
+            const prizes = [2500, 1500, 1000, 500, 300, 100, 100, 100, 100, 100, 50, 50, 50, 50];
             return prizes[position - 1] || 0;
         }
 
@@ -462,7 +462,7 @@
             for (let i = 0; i < 3; i++) {
                 topPlayersContainer.innerHTML += createLoadingPlayerCard();
             }
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < 11; i++) {
                 leaderboardListContainer.innerHTML += createLoadingLeaderboardEntry();
             }
 
