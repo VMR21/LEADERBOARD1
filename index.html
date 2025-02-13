@@ -123,21 +123,70 @@
         <div id="countdown" class="text-white text-center text-2xl font-bold"></div>
         <div class="text-center mt-4">
 <style>
-    @keyframes shake {
-        0% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        50% { transform: translateX(5px); }
-        75% { transform: translateX(-5px); }
-        100% { transform: translateX(5px); }
+    @keyframes glitter {
+        0% {
+            background-position: -200% 0;
+            filter: brightness(1.5);
+        }
+        50% {
+            background-position: 200% 0;
+            filter: brightness(2);
+        }
+        100% {
+            background-position: -200% 0;
+            filter: brightness(1.5);
+        }
     }
 
-    .shake {
-        animation: shake 0.5s ease-in-out infinite;
+    @keyframes zoom {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes pop {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .glitter {
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 75%);
+        background-size: 400% 400%;
+        animation: glitter 1.5s linear infinite, zoom 3s ease-in-out infinite;
+        transition: background-color 1s, transform 0.3s;
+    }
+
+    /* Add pop animation */
+    .glitter:active {
+        animation: pop 0.3s ease-out;
+    }
+
+    .glitter:hover {
+        background-color: #4F46E5; /* Example hover color */
+        transform: scale(1.05);
     }
 </style>
 
-<button onclick="window.location.href='https://www.azisaiscoreboard.com/';" class="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition shake">Leaderboard</button>
-<button onclick="window.location.href='https://vmr21.github.io/WAGERREWARD/';" class="ml-4 px-6 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition shake">Wager Rewards</button>
+<button onclick="window.location.href='https://www.azisaiscoreboard.com/';" class="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition glitter">
+    Leaderboard
+</button>
+<button onclick="window.location.href='https://vmr21.github.io/WAGERREWARD/';" class="ml-4 px-6 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition glitter">
+    Wager Rewards
+</button>
+
 
 
         </div>
