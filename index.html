@@ -541,5 +541,35 @@
         // Refresh the leaderboard every 5 minutes (300000 milliseconds)
         setInterval(populateLeaderboard, 300000);
     </script>
+<script>
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    alert('Right-click is disabled.');
+  });
+
+  // Disable F12 key (DevTools)
+  document.onkeydown = function(e) {
+    if (e.keyCode == 123) {
+      e.preventDefault();
+      alert('F12 (DevTools) is disabled.');
+    }
+
+    // Disable keyboard shortcuts for Developer Tools and View Source
+    if ((e.ctrlKey && e.shiftKey && e.keyCode == 73) ||  // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.keyCode == 74) ||  // Ctrl+Shift+J
+        (e.ctrlKey && e.keyCode == 85)) {                // Ctrl+U
+      e.preventDefault();
+      alert('Developer tools and view source are disabled.');
+    }
+  };
+
+  // Disable text selection
+  document.addEventListener('selectstart', function(event) {
+    event.preventDefault();
+    alert('Text selection is disabled.');
+  });
+</script>
+
 </body>
 </html>
