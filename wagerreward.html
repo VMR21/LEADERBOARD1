@@ -124,11 +124,98 @@
         <div id="stars"></div>
     </div>
 
-    <header class="relative z-10 w-full py-4 bg-purple-900 bg-opacity-50 backdrop-blur-md">
-        <div class="container mx-auto px-4">
-            <div id="countdown" class="text-white text-center text-2xl font-bold"></div>
+<header class="relative z-10 w-full py-4 bg-purple-900 bg-opacity-50 backdrop-blur-md">
+    <div class="container mx-auto px-4">
+        <div id="countdown" class="text-white text-center text-2xl font-bold"></div>
+        <div class="text-center mt-4">
+<style>
+    @keyframes glitter {
+        0% {
+            background-position: -200% 0;
+            filter: brightness(1.2); /* Reduced brightness */
+        }
+        50% {
+            background-position: 200% 0;
+            filter: brightness(1.5); /* Reduced brightness */
+        }
+        100% {
+            background-position: -200% 0;
+            filter: brightness(1.2); /* Reduced brightness */
+        }
+    }
+
+    @keyframes zoom {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes pop {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .glitter {
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 75%); /* Reduced opacity */
+        background-size: 400% 400%;
+        animation: glitter 3s linear infinite, zoom 3s ease-in-out infinite; /* Slowed down glitter effect */
+        transition: background-color 1s, transform 0.3s;
+    }
+
+    /* Add pop animation */
+    .glitter:active {
+        animation: pop 0.3s ease-out;
+    }
+
+    .glitter:hover {
+        transform: scale(1.05);
+    }
+
+    /* Leaderboard Button - Green */
+    .leaderboard-btn {
+        background-color: #34D399; /* Green */
+        color: white;
+    }
+
+    .leaderboard-btn:hover {
+        background-color: #10B981; /* Darker green */
+    }
+
+    /* Wager Rewards Button - Orange */
+    .wager-btn {
+        background-color: #FB923C; /* Orange */
+        color: white;
+    }
+
+    .wager-btn:hover {
+        background-color: #F97316; /* Darker orange */
+    }
+</style>
+
+<button onclick="window.location.href='https://www.azisaiscoreboard.com';" class="px-6 py-2 rounded-md glitter leaderboard-btn">
+    Leaderboard
+</button>
+<button onclick="window.location.href='https://www.azisaiscoreboard.com/wagerreward.html';" class="ml-4 px-6 py-2 rounded-md glitter wager-btn">
+    Wager Rewards
+</button>
+
+
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="relative container mx-auto px-4 pt-12 pb-16 flex-grow z-10">
         <div class="text-center mb-16">
@@ -245,7 +332,6 @@
 </body>
 </html>
 
-
 </div>
             
         <div class="max-w-4xl mx-auto mb-4">
@@ -257,9 +343,9 @@
         </div>
     </main>
 
-    <footer class="relative z-10 mt-auto">
+<footer class="relative z-10 mt-auto">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/30 to-black pointer-events-none"></div>
-    
+
     <div class="relative bg-gradient-to-b from-purple-950/60 to-black/90 backdrop-blur-xl border-t border-purple-500/10">
         <div class="container mx-auto px-4 py-16">
             <div class="flex flex-col items-center mb-12">
@@ -268,31 +354,36 @@
                 </div>
                 <h2 class="text-3xl font-bold text-purple-100 mb-4">AZISAI0721</h2>
                 <p class="text-purple-200 text-center max-w-md text-sm">
-    このリーダーボードではRTPによってカウントへの貢献度を変化させます:
-</p>
-<ul class="text-purple-200 text-center max-w-md text-sm list-disc list-inside">
-    <li>RTP97％以下のゲームは賭け額の100％が適応</li>
-    <li>RTP97～98％のゲームは賭け額の50％が適応</li>
-    <li>RTP98％以上のゲームは賭け額の10％が適応</li>
-</ul>
-<p class="text-purple-200 text-center max-w-md text-sm">
-    ※Diceは適応外です
-</p>
+                    このリーダーボードではRTPによってカウントへの貢献度を変化させます:
+                </p>
+                <ul class="text-purple-200 text-center max-w-md text-sm list-disc list-inside">
+                    <li>RTP97％以下のゲームは賭け額の100％が適応</li>
+                    <li>RTP97～98％のゲームは賭け額の50％が適応</li>
+                    <li>RTP98％以上のゲームは賭け額の10％が適応</li>
+                </ul>
+                <p class="text-purple-200 text-center max-w-md text-sm">
+                    ※Diceは適応外です
+                </p>
+
+                <!-- Countdown Timer Section -->
+                <div id="countdown" class="flex justify-center items-center space-x-4 mt-8">
+                    <!-- Countdown will populate here -->
+                </div>
 
                 <div class="flex space-x-6 mt-6">
-                  <a href="https://x.com/RATOR205" target="_blank" rel="noopener noreferrer" class="icon-link">
-                    <img src="https://i.ibb.co/dJjtLCgh/Screenshot-2025-02-13-153630-removebg-preview.png" alt="X Logo" class="h-16 w-16">  
-                  </a>
-                  <a href="https://kick.com/azisai0721" target="_blank" rel="noopener noreferrer" class="icon-link">
-                    <img src="https://i.ibb.co/Zsw9SH9/images-removebg-preview.png" alt="Kick Logo" class="h-16 w-24">  
-                  </a>
-                  <a href="https://roobet.com/?ref=windia" target="_blank">
-                <img src="https://i.ibb.co/8gKXJsDz/Screenshot-1-150x150-removebg-preview.png" 
-                     alt="Roobet" class="h-16 w-16">
-
-                  <a href="https://discord.gg/azisa" target="_blank" rel="noopener noreferrer" class="icon-link">
-                    <img src="https://i.ibb.co/81pqFsY/Screenshot-2025-02-13-153913-removebg-preview.png" alt="Discord Logo" class="h-16 w-16">  
-                  </a>
+                    <a href="https://x.com/RATOR205" target="_blank" rel="noopener noreferrer" class="icon-link">
+                        <img src="https://i.ibb.co/dJjtLCgh/Screenshot-2025-02-13-153630-removebg-preview.png" alt="X Logo" class="h-16 w-16">  
+                    </a>
+                    <a href="https://kick.com/azisai0721" target="_blank" rel="noopener noreferrer" class="icon-link">
+                        <img src="https://i.ibb.co/Zsw9SH9/images-removebg-preview.png" alt="Kick Logo" class="h-16 w-24">  
+                    </a>
+                    <a href="https://roobet.com/?ref=windia" target="_blank">
+                        <img src="https://i.ibb.co/8gKXJsDz/Screenshot-1-150x150-removebg-preview.png" 
+                             alt="Roobet" class="h-16 w-16">
+                    </a>
+                    <a href="https://discord.gg/azisa" target="_blank" rel="noopener noreferrer" class="icon-link">
+                        <img src="https://i.ibb.co/81pqFsY/Screenshot-2025-02-13-153913-removebg-preview.png" alt="Discord Logo" class="h-16 w-16">  
+                    </a>
                 </div>
             </div>
             <p class="text-purple-300 text-sm text-center">
@@ -301,6 +392,64 @@
         </div>
     </div>
 </footer>
-    <script>
+
+<!-- Overlay (for the countdown finish) -->
+<div id="countdown-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center;">
+    <div class="text-white">NEW WAGER REWARDS SOON</div>
+</div>
+
+<script>
+    const countDownDate = new Date("2025-04-01T03:29:59").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = `
+            <div class="flex justify-center items-center space-x-4">
+                <div class="countdown-item bg-purple-800 rounded-lg p-2">
+                    <span class="text-3xl">${days}</span>
+                    <span class="text-sm">days</span>
+                </div>
+                <div class="countdown-item bg-purple-800 rounded-lg p-2">
+                    <span class="text-3xl">${hours}</span>
+                    <span class="text-sm">hours</span>
+                </div>
+                <div class="countdown-item bg-purple-800 rounded-lg p-2">
+                    <span class="text-3xl">${minutes}</span>
+                    <span class="text-sm">mins</span>
+                </div>
+                <div class="countdown-item bg-purple-800 rounded-lg p-2">
+                    <span class="text-3xl">${seconds}</span>
+                    <span class="text-sm">secs</span>
+                </div>
+            </div>
+        `;
+
+        if (distance < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("countdown").innerHTML = "NEW LEADERBOARD SOON";
+            document.getElementById("countdown-overlay").style.display = "flex";
+            document.body.style.overflow = "scroll";
+        }
+    }
+
+    const countdownTimer = setInterval(updateCountdown, 1000);
+
+    // Call updateCountdown immediately to avoid initial delay
+    updateCountdown();
+
+    // Call the function to populate the leaderboard when the page loads
+    window.addEventListener('load', populateLeaderboard);
+
+    // Refresh the leaderboard every 5 minutes (300000 milliseconds)
+    setInterval(populateLeaderboard, 300000);
+</script>
+
 </body>
 </html>
