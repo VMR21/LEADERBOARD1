@@ -331,7 +331,7 @@
         // Function to create star-like elements
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 14; i++) {
+            for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.className = 'absolute rounded-full animate-pulse-glow';
                 star.style.top = `${Math.random() * 100}%`;
@@ -353,7 +353,7 @@
         async function fetchLeaderboardData() {
             try {
               
-                const response = await fetch('https://legitimate-navy-reality-reddymodith.replit.app/leaderboard');
+                const response = await fetch('https://legitimate-navy-reality-reddymodith.replit.app/leaderboard/top14');
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -411,7 +411,7 @@
         }
 
         function createLeaderboardEntry(player, position) {
-            const isBlurred = position >= 20;
+            const isBlurred = position >= 15;
             let html = `
                 <div class="group relative bg-gradient-to-r from-purple-800 to-purple-900 rounded-xl p-4 backdrop-blur-sm border-2 border-purple-500 hover:bg-purple-800/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl animate-fade-in ${isBlurred ? 'blur-sm' : ''}">
                     <div class="flex items-center gap-6">
