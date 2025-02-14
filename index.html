@@ -211,19 +211,39 @@
     </div>
 </header>
 
-
-<main class="relative container mx-auto px-4 pt-12 pb-16 flex-grow z-10"> 
-  <div class="text-center mb-16"> 
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-title"> 
-      <span class="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Roobet</span> 
-      <span class="text-white"> Leaderboard</span> 
-    </h1> 
-<p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-            Special Tournament <span class="text-purple-300 font-bold">$7000</span> BIG <span class="text-purple-300 font-bold">Self Monthly</span> Live now!!!!
+<main class="relative container mx-auto px-4 pt-12 pb-16 flex-grow z-10">
+    <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-title">
+            <span class="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Roobet</span>
+            <span class="text-white"> Leaderboard</span>
+        </h1>
+        <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
+            Special Tournament <span class="text-purple-300 font-bold" id="prize">＄7000</span>
+        </p>
+        <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
+            <span class="text-purple-300 font-bold text-xl" id="big">BIG</span> Self Monthly Live now!!!!
         </p>
     </div>
+</main>
 
+<style>
+    #prize, #big {
+        display: inline-block;
+        animation: zoomInOut 3s infinite;
+    }
 
+    @keyframes zoomInOut {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
 
         <div id="topPlayers" class="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
             <!-- Top 3 players will be inserted here -->
