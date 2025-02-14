@@ -221,12 +221,34 @@
     <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-title">
             <span class="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Roobet</span>
-            <span class="text-white"> Wager Reward</span>
+            <span class="text-white"> Wager Rewards</span>
         </h1>
         <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-            Special Tournament <span class="text-purple-300 font-bold">$7000</span> BIG <span class="text-purple-300 font-bold">Self Monthly</span> Live now!!!!
+            Special Tournament <span class="text-purple-300 font-bold" id="prize">＄7000</span>
+        </p>
+        <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
+            <span class="text-purple-300 font-bold text-xl" id="big">BIG</span> Self Monthly Live now!!!!
         </p>
     </div>
+    
+<style>
+    #prize, #big {
+        display: inline-block;
+        animation: zoomInOut 3s infinite;
+    }
+
+    @keyframes zoomInOut {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
 
         <div class="wager-reward-frame">
             <!-- $500,000+ Wager -->
