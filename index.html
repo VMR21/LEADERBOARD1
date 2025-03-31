@@ -195,35 +195,45 @@
     <header class="relative z-10 w-full py-4 bg-purple-900 bg-opacity-50 backdrop-blur-md">
         <div class="container mx-auto px-4">
             <div id="countdown" class="text-white text-center text-2xl font-bold"></div>
-            <div class="text-center mt-4">
-
-                <!-- Buttons to open modal -->
-                <button onclick="window.location.href='https://www.azisaiscoreboard.com';" class="ml-4 px-6 py-2 rounded-md glitter wager-btn">
+            <div class="text-center mt-4 flex justify-center gap-4">
+                <!-- Buttons to open modal and external links -->
+                <button onclick="window.location.href='https://www.azisaiscoreboard.com';" class="px-6 py-2 rounded-md glitter wager-btn bg-yellow-400 text-white font-bold shadow-md hover:bg-yellow-500">
                     ROOBET
                 </button>
-                <button onclick="window.location.href='https://www.azisaiscoreboard.com/1win.html';" class="px-6 py-2 rounded-md glitter leaderboard-btn">
+                <button onclick="window.location.href='https://www.azisaiscoreboard.com/1win.html';" class="px-6 py-2 rounded-md glitter leaderboard-btn bg-cyan-400 text-white font-bold shadow-md hover:bg-cyan-500">
                     1WIN
                 </button> 
-
-
+                <button onclick="openModal()" class="px-6 py-2 rounded-md glitter rules-btn bg-green-600 text-white font-bold shadow-md hover:bg-green-700">
+                    RULES
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Modal Popup -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
+    <div id="myModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="modal-content bg-white p-6 rounded-md shadow-lg">
             <h2 class="text-2xl font-bold text-purple-900">Rules</h2>
             <p class="text-purple-600">このリーダーボードではRTPによってカウント率が変化します:</p>
             <ul class="text-purple-600 text-center mt-4">
-                <li>-  RTP97％以下のゲームは賭け額の100％が適応</li>
-                <li>-  RTP97～98％のゲームは賭け額の50％が適応</li>
-                <li>-  RTP98％以上のゲームは賭け額の10％が適応</li>
+                <li>- RTP97％以下のゲームは賭け額の100％が適応</li>
+                <li>- RTP97～98％のゲームは賭け額の50％が適応</li>
+                <li>- RTP98％以上のゲームは賭け額の10％が適応</li>
             </ul>
             <p class="text-purple-600 mt-4">※Diceは適応外</p>
-            <button class="modal-close" onclick="closeModal()">Close</button>
+            <button class="modal-close mt-4 px-4 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800" onclick="closeModal()">Close</button>
         </div>
     </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("myModal").classList.remove("hidden");
+        }
+        function closeModal() {
+            document.getElementById("myModal").classList.add("hidden");
+        }
+    </script>
+
 
     <script>
         // Function to open the modal
@@ -320,7 +330,7 @@
 </div>
 
 <p class="text-purple-300 text-sm text-center">
-    &copy; 2025 AZISAI. All rights reserved.
+    &copy; 2025 Roobet. All rights reserved.
 </p>
 
         </div>
