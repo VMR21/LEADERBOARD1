@@ -391,20 +391,16 @@ async function fetchLeaderboardData() {
     try {
         // Manually define leaderboard data
         const data = [
-            { username: "Player1", weightedWager: 1000 },
-            { username: "Player2", weightedWager: 950 },
-            { username: "Player3", weightedWager: 900 },
-            { username: "Player4", weightedWager: 850 },
-            { username: "Player5", weightedWager: 800 },
-            { username: "Player6", weightedWager: 750 },
-            { username: "Player7", weightedWager: 700 },
-            { username: "Player8", weightedWager: 650 },
-            { username: "Player9", weightedWager: 600 },
-            { username: "Player10", weightedWager: 550 },
-            { username: "Player11", weightedWager: 500 },
-            { username: "Player12", weightedWager: 450 },
-            { username: "Player13", weightedWager: 400 },
-            { username: "Player14", weightedWager: 350 }
+            { username: "Player1", weightedWager: 0 },
+            { username: "Player2", weightedWager: 0 },
+            { username: "Player3", weightedWager: 0 },
+            { username: "Player4", weightedWager: 0 },
+            { username: "Player5", weightedWager: 0 },
+            { username: "Player6", weightedWager: 0 },
+            { username: "Player7", weightedWager: 0 },
+            { username: "Player8", weightedWager: 0 },
+            { username: "Player9", weightedWager: 0 },
+            { username: "Player10", weightedWager: 0 }
         ];
 
         // Process the data to match our required format
@@ -489,7 +485,7 @@ async function fetchLeaderboardData() {
             if (position === 5) {
                 html += `
                     <div class="my-4 p-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl text-center animate-pulse">
-                        <p class="text-white text-lg font-bold">14th February 2025 to 31th March 2025</p>
+                        <p class="text-white text-lg font-bold">31th March 2025 to 31th April 2025</p>
                     </div>
                 `;
             }
