@@ -198,15 +198,13 @@
             <div class="text-center mt-4">
 
                 <!-- Buttons to open modal -->
-                <button onclick="window.location.href='https://www.azisaiscoreboard.com';" class="px-6 py-2 rounded-md glitter leaderboard-btn">
-                    Leaderboard
+                <button onclick="window.location.href='https://www.azisaiscoreboard.com';" class="ml-4 px-6 py-2 rounded-md glitter wager-btn">
+                    ROOBET
                 </button>
-                <button onclick="window.location.href='https://www.azisaiscoreboard.com/wagerreward.html';" class="ml-4 px-6 py-2 rounded-md glitter wager-btn">
-                    Wager Rewards
+                <button onclick="window.location.href='https://www.azisaiscoreboard.com/1win.html';" class="px-6 py-2 rounded-md glitter leaderboard-btn">
+                    1WIN
                 </button> 
-                <button onclick="openModal()" class="ml-4 px-6 py-2 rounded-md glitter" style="background-color: #FF5733; color: white;">
-                    Rules
-                </button>
+
 
             </div>
         </div>
@@ -246,7 +244,7 @@
             <span class="text-white"> Leaderboard</span>
         </h1>
         <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-            Special Tournament <span class="text-purple-300 font-bold" id="prize">＄7000</span>
+            Special Tournament <span class="text-purple-300 font-bold" id="prize">＄10,000</span>
         </p>
         <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
             <span class="text-purple-300 font-bold text-xl" id="big">BIG</span> Self Monthly Live now!!!!
@@ -414,7 +412,7 @@
 
         // Function to get static prize based on position
         function getStaticPrize(position) {
-            const prizes = [3000, 1500, 1000, 500, 300, 100, 100, 100, 100, 100, 50, 50, 50, 50];
+            const prizes = [3000, 2000, 1500, 1000, 500, 400, 400, 400, 400, 400];
             return prizes[position - 1] || 0;
         }
 
@@ -479,7 +477,7 @@
             if (position === 5) {
                 html += `
                     <div class="my-4 p-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl text-center animate-pulse">
-                        <p class="text-white text-lg font-bold">14th February 2025 to 31th March 2025</p>
+                        <p class="text-white text-lg font-bold">31th March 2025 to 31th April 2025</p>
                     </div>
                 `;
             }
@@ -529,7 +527,7 @@
             }
         }
 
-        const countDownDate = new Date("2025-03-30T20:29:59").getTime();
+        const countDownDate = new Date("2025-04-30T20:29:59").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
