@@ -263,6 +263,39 @@
 </main>
 
 <style>
+  /* Animation for title */
+  @keyframes titleAnimation {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .animate-title {
+    animation: titleAnimation 1.2s ease-out;
+  }
+  
+  /* Animation for fade-in effect */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  /* Styling adjustments for prize and 'BIG' text */
+  #prize {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  #big {
+    font-size: 1.75rem;
+    font-weight: bold;
+  }
+</style>
+
+<style>
     #prize, #big {
         display: inline-block;
         animation: zoomInOut 3s infinite;
