@@ -237,13 +237,13 @@
     <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-title">
             <span class="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Roobet</span>
-            <span class="text-white"> Wager Rewards</span>
+            <span class="text-white"> Weekly Rewards</span>
         </h1>
         <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-            Special Tournament <span class="text-purple-300 font-bold" id="prize">＄7000</span>
+            Special Weekly Wager Bonus <span class="text-purple-300 font-bold" id="prize">＄100 EACH</span>
         </p>
         <p class="text-2xl text-purple-100 mb-8 animate-fade-in">
-            <span class="text-purple-300 font-bold text-xl" id="big">BIG</span> Self Monthly Live now!!!!
+            <span class="text-purple-300 font-bold text-xl" id="big">BIG</span> Self Weekly Rewards Live now!!!!
         </p>
     </div>
     
@@ -266,105 +266,39 @@
     }
 </style>
 
-        <div class="wager-reward-frame">
-            <!-- $500,000+ Wager -->
-            <div class="wager-reward-item" id="wager-500k">
-                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$500,000+</span></p>
-                <p class="text-white text-center font-bold text-2xl">Reward: $2500</p>
-                <ul class="username-list" id="list-500k"></ul>
-            </div>
-            
-            <!-- $300,000 - $500,000 Wager -->
-            <div class="wager-reward-item" id="wager-300k-500k">
-                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$300,000 - $500,000</span></p>
-                <p class="text-white text-center font-bold text-2xl">Reward: $1700</p>
-                <ul class="username-list" id="list-300k-500k"></ul>
-            </div>
+<div class="wager-reward-frame justify-center">
+    <!-- $5,000+ Wager -->
+    <div class="wager-reward-item">
+        <p class="text-white text-center font-bold text-2xl">
+            Wager: <span class="text-purple-300">$5,000+</span>
+        </p>
+        <p class="text-white text-center font-bold text-2xl">
+            Reward: 100$
+        </p>
+        <ul class="username-list" id="list-5k"></ul>
+    </div>
+</div>
 
-            <!-- $100,000 - $300,000 Wager -->
-            <div class="wager-reward-item" id="wager-100k-300k">
-                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$100,000 - $300,000</span></p>
-                <p class="text-white text-center font-bold text-2xl">Reward: $800</p>
-                <ul class="username-list" id="list-100k-300k"></ul>
-            </div>
-
-            <!-- $50,000 - $100,000 Wager -->
-            <div class="wager-reward-item" id="wager-50k-100k">
-                <p class="text-white text-center font-bold text-2xl">Wager: <span class="text-purple-300">$50,000 - $100,000</span></p>
-                <p class="text-white text-center font-bold text-2xl">Reward: $500</p>
-                <ul class="username-list" id="list-50k-100k"></ul>
-            </div>
-        </div>
 
     </main>
 
     <script>
-        // Fetch the JSON data from the provided URL
-        fetch('https://legitimate-navy-reality-reddymodith.replit.app/leaderboard')
-            .then(response => response.json())
-            .then(data => {
-                // Categorize the users based on wager amounts
-                const categorizedUsers = {
-                    "$500,000+": [],
-                    "$300,000 - $500,000": [],
-                    "$100,000 - $300,000": [],
-                    "$50,000 - $100,000": []
-                };
+        fetch('https://azisaiweekly.onrender.com/leaderboard/top14')
+    .then(response => response.json())
+    .then(data => {
+        const users5k = data.filter(user => user.wagered >= 5000);
 
-                // Process each user and categorize based on their wagered amount
-                data.forEach(user => {
-                    if (user.wagered >= 500000) {
-                        categorizedUsers["$500,000+"].push(user.username);
-                    } else if (user.wagered >= 300000) {
-                        categorizedUsers["$300,000 - $500,000"].push(user.username);
-                    } else if (user.wagered >= 100000) {
-                        categorizedUsers["$100,000 - $300,000"].push(user.username);
-                    } else if (user.wagered >= 50000) {
-                        categorizedUsers["$50,000 - $100,000"].push(user.username);
-                    }
-                });
+        const list5k = document.getElementById('list-5k');
+        users5k.forEach(user => {
+            const li = document.createElement('li');
+            li.textContent = user.username;
+            list5k.appendChild(li);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
 
-                // Function to display users under the correct wager category
-                function displayUsers() {
-                    // Wager $500,000+
-                    const list500k = document.getElementById('list-500k');
-                    categorizedUsers["$500,000+"].forEach(user => {
-                        const li = document.createElement('li');
-                        li.textContent = user;
-                        list500k.appendChild(li);
-                    });
-
-                    // Wager $300,000 - $500,000
-                    const list300k500k = document.getElementById('list-300k-500k');
-                    categorizedUsers["$300,000 - $500,000"].forEach(user => {
-                        const li = document.createElement('li');
-                        li.textContent = user;
-                        list300k500k.appendChild(li);
-                    });
-
-                    // Wager $100,000 - $300,000
-                    const list100k300k = document.getElementById('list-100k-300k');
-                    categorizedUsers["$100,000 - $300,000"].forEach(user => {
-                        const li = document.createElement('li');
-                        li.textContent = user;
-                        list100k300k.appendChild(li);
-                    });
-
-                    // Wager $50,000 - $100,000
-                    const list50k100k = document.getElementById('list-50k-100k');
-                    categorizedUsers["$50,000 - $100,000"].forEach(user => {
-                        const li = document.createElement('li');
-                        li.textContent = user;
-                        list50k100k.appendChild(li);
-                    });
-                }
-
-                // Call function to display users
-                displayUsers();
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
     </script>
 
 </body>
@@ -403,17 +337,17 @@
     <a href="https://x.com/RATOR205" target="_blank" rel="noopener noreferrer" class="icon-link">
         <img src="https://i.ibb.co/dJjtLCgh/Screenshot-2025-02-13-153630-removebg-preview.png" alt="X Logo" class="h-16 w-16">  
     </a>
-    <a href="https://youtube.com/@azisai07219" target="_blank" rel="noopener noreferrer" class="icon-link">
+    <a href="https://youtube.com/@azisai-onkazi-kirinuki" target="_blank" rel="noopener noreferrer" class="icon-link">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo" class="h-16 w-16">  
     </a>
     <a href="https://kick.com/azisai0721" target="_blank" rel="noopener noreferrer" class="icon-link">
         <img src="https://i.ibb.co/Zsw9SH9/images-removebg-preview.png" alt="Kick Logo" class="h-16 w-24">  
     </a>
-    <a href="https://roobet.com/?ref=windia" target="_blank">
+    <a href="https://roobet.com/?ref=azisai07219" target="_blank">
         <img src="https://i.ibb.co/8gKXJsDz/Screenshot-1-150x150-removebg-preview.png" 
              alt="Roobet" class="h-16 w-16">
     </a>
-    <a href="https://discord.gg/azisa" target="_blank" rel="noopener noreferrer" class="icon-link">
+    <a href="https://discord.gg/azisai" target="_blank" rel="noopener noreferrer" class="icon-link">
         <img src="https://i.ibb.co/81pqFsY/Screenshot-2025-02-13-153913-removebg-preview.png" alt="Discord Logo" class="h-16 w-16">  
     </a>
 </div>
@@ -425,18 +359,24 @@
         </div>
     </div>
 </footer>
-
-<!-- Overlay (for the countdown finish) -->
-<div id="countdown-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center;">
-    <div class="text-white">NEW WAGER REWARDS SOON</div>
-</div>
-
 <script>
-    const countDownDate = new Date("2025-03-30T20:29:59").getTime();
+    function getCurrent7DayPeriodEnd() {
+        const now = new Date();
+        const base = new Date(Date.UTC(2025, 3, 30, 15, 0, 1)); // April 30, 2025 at 15:00:01 UTC = May 1 JST at 00:00:01
+
+
+        const msIn7Days = 7 * 24 * 60 * 60 * 1000;
+        const elapsed = now.getTime() - base.getTime();
+        const intervalsPassed = Math.floor(elapsed / msIn7Days);
+
+        const nextEnd = new Date(base.getTime() + (intervalsPassed + 1) * msIn7Days);
+        return nextEnd;
+    }
 
     function updateCountdown() {
+        const endDate = getCurrent7DayPeriodEnd().getTime();
         const now = new Date().getTime();
-        const distance = countDownDate - now;
+        const distance = endDate - now;
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -465,7 +405,6 @@
         `;
 
         if (distance < 0) {
-            clearInterval(countdownTimer);
             document.getElementById("countdown").innerHTML = "NEW LEADERBOARD SOON";
             document.getElementById("countdown-overlay").style.display = "flex";
             document.body.style.overflow = "scroll";
@@ -473,16 +412,12 @@
     }
 
     const countdownTimer = setInterval(updateCountdown, 1000);
-
-    // Call updateCountdown immediately to avoid initial delay
     updateCountdown();
-
-    // Call the function to populate the leaderboard when the page loads
-    window.addEventListener('load', populateLeaderboard);
-
-    // Refresh the leaderboard every 5 minutes (300000 milliseconds)
-    setInterval(populateLeaderboard, 300000);
 </script>
 
+<!-- Overlay (for the countdown finish) -->
+<div id="countdown-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center;">
+    <div class="text-white">NEW WAGER REWARDS SOON</div>
+</div>
 </body>
 </html>
