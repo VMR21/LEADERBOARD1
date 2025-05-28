@@ -362,23 +362,44 @@
     </div>
 </footer>
 <script>
-    function getCurrent7DayPeriodEnd() {
+    function getCurrentPeriodEndDate() {
         const now = new Date();
-        const base = new Date(Date.UTC(2025, 3, 30, 15, 0, 1)); // April 30, 2025 at 15:00:01 UTC = May 1 JST at 00:00:01
 
+        // Convert current UTC time to JST
+        const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+        const year = jstNow.getUTCFullYear();
+        const month = jstNow.getUTCMonth();
+        const day = jstNow.getUTCDate();
 
-        const msIn7Days = 7 * 24 * 60 * 60 * 1000;
-        const elapsed = now.getTime() - base.getTime();
-        const intervalsPassed = Math.floor(elapsed / msIn7Days);
+        let end;
 
-        const nextEnd = new Date(base.getTime() + (intervalsPassed + 1) * msIn7Days);
-        return nextEnd;
+        if (day >= 1 && day <= 7) {
+            end = new Date(Date.UTC(year, month, 7, 14, 59, 59)); // 23:59:59 JST
+        } else if (day >= 8 && day <= 14) {
+            end = new Date(Date.UTC(year, month, 14, 14, 59, 59));
+        } else if (day >= 15 && day <= 21) {
+            end = new Date(Date.UTC(year, month, 21, 14, 59, 59));
+        } else if (day >= 22 && day <= 28) {
+            end = new Date(Date.UTC(year, month, 28, 14, 59, 59));
+        } else {
+            return null; // 29th–31st
+        }
+
+        return end;
     }
 
     function updateCountdown() {
-        const endDate = getCurrent7DayPeriodEnd().getTime();
-        const now = new Date().getTime();
-        const distance = endDate - now;
+        const endDate = getCurrentPeriodEndDate();
+        const now = new Date();
+
+        if (!endDate) {
+            document.getElementById("countdown").innerHTML = "NEW WEEKLY REWARDS FROM 1ST";
+            document.getElementById("countdown-overlay").style.display = "flex";
+            document.body.style.overflow = "scroll";
+            return;
+        }
+
+        const distance = endDate.getTime() - now.getTime();
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -405,21 +426,11 @@
                 </div>
             </div>
         `;
-
-        if (distance < 0) {
-            document.getElementById("countdown").innerHTML = "NEW LEADERBOARD SOON";
-            document.getElementById("countdown-overlay").style.display = "flex";
-            document.body.style.overflow = "scroll";
-        }
     }
 
     const countdownTimer = setInterval(updateCountdown, 1000);
     updateCountdown();
 </script>
 
-<!-- Overlay (for the countdown finish) -->
-<div id="countdown-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center;">
-    <div class="text-white">NEW WAGER REWARDS SOON</div>
-</div>
 </body>
 </html>
